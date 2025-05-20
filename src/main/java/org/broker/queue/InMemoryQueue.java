@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class InMemoryQueue implements Queue {
 
     private final String name;
-    private final BlockingQueue<Message> queue; // Используем BlockingQueue
+    private final BlockingQueue<Message> queue;
 
     public InMemoryQueue(String name) {
         this(name, new LinkedBlockingQueue<>());
@@ -28,12 +28,12 @@ public class InMemoryQueue implements Queue {
 
     @Override
     public void enqueue(Message message) throws InterruptedException {
-        queue.put(message); // Блокируется, если очередь заполнена
+        queue.put(message);
     }
 
     @Override
     public Message dequeue() throws InterruptedException {
-        return queue.take(); // Блокируется, если очередь пуста
+        return queue.take();
     }
 
     @Override
